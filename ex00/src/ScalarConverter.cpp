@@ -6,7 +6,7 @@
 /*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 16:47:04 by meferraz          #+#    #+#             */
-/*   Updated: 2025/05/24 08:11:40 by meferraz         ###   ########.fr       */
+/*   Updated: 2025/05/24 16:13:49 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ bool ScalarConverter::isInt(const std::string &str)
 	errno = 0;
 	long val = std::strtol(str.c_str(), &end, 10);
 	return (errno != ERANGE && *end == '\0' &&
-		val >= std::numeric_limits<int>::min() &&
-		val <= std::numeric_limits<int>::max());
+			val >= std::numeric_limits<int>::min() &&
+			val <= std::numeric_limits<int>::max());
 }
 
 /**
@@ -128,6 +128,7 @@ bool ScalarConverter::isPseudoLiteral(const std::string &str)
 {
 	return (str == "nan" || str == "nanf" ||
 			str == "-inf" || str == "+inf" ||
+			str == "inf" || str == "inff" ||
 			str == "-inff" || str == "+inff");
 }
 
@@ -147,8 +148,8 @@ template <typename T>
 bool ScalarConverter::isOverflow(double value)
 {
 	return std::isnan(value) || std::isinf(value) ||
-		value < std::numeric_limits<T>::min() ||
-		value > std::numeric_limits<T>::max();
+		   value < std::numeric_limits<T>::min() ||
+		   value > std::numeric_limits<T>::max();
 }
 
 // Helper function to print "impossible" for all types
@@ -255,16 +256,16 @@ void ScalarConverter::convert(const std::string &str)
 	}
 
 	static const TypeHandler handlers[] =
-	{
-		{ &isChar,   &convertChar },
-		{ &isInt,    &convertInt },
-		{ &isFloat,  &convertFloat },
-		{ &isDouble, &convertDouble }
-	};
+		{
+			{&isChar, &convertChar},
+			{&isInt, &convertInt},
+			{&isFloat, &convertFloat},
+			{&isDouble, &convertDouble}};
 
-	for (size_t i = 0; i < sizeof(handlers)/sizeof(handlers[0]); ++i)
+	for (size_t i = 0; i < sizeof(handlers) / sizeof(handlers[0]); ++i)
 	{
-		if (handlers[i].isType(str)) {
+		if (handlers[i].isType(str))
+		{
 			handlers[i].convert(str);
 			return;
 		}
@@ -393,7 +394,7 @@ void ScalarConverter::convertPseudoLiteral(const std::string &str)
 		printConversion(std::numeric_limits<double>::quiet_NaN());
 	else if (str == "-inf" || str == "-inff")
 		printConversion(-std::numeric_limits<double>::infinity());
-	else if (str == "+inf" || str == "+inff")
+	else if (str == "+inf" || str == "+inff" || str == "inf" || str == "inff")
 		printConversion(std::numeric_limits<double>::infinity());
 	else
 		std::cout << ERROR_PSEUDO << std::endl;
