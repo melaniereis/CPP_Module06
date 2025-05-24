@@ -19,6 +19,8 @@
 #include <iomanip>
 #include <cctype>
 #include <cerrno>
+#include <cmath>
+#include <cstdlib>
 
 // Error message macros
 #define ERROR_EMPTY          RED "ERROR: Empty input" RESET

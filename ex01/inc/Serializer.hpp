@@ -13,6 +13,7 @@
 #pragma once
 
 #include <iostream>
+#include <stdint.h>
 #include <ansi.h>
 
 class Data;

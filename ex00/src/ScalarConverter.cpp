@@ -11,12 +11,6 @@
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-#include "ScalarConverter.hpp"
-#include <cerrno>
-#include <climits>
-#include <cmath>
-#include <iomanip>
-#include <iostream>
 
 // Type checking functions
 
@@ -83,7 +77,7 @@ bool ScalarConverter::isInt(const std::string &str)
  */
 bool ScalarConverter::isFloat(const std::string &str)
 {
-	if (str.length() < 2 || str.back() != 'f')
+	if (str.length() < 2 || str[str.length() - 1] != 'f')
 		return false;
 	std::string core = str.substr(0, str.length() - 1);
 	char *end;
