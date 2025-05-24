@@ -6,7 +6,7 @@
 /*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:33:55 by meferraz          #+#    #+#             */
-/*   Updated: 2025/05/22 17:25:48 by meferraz         ###   ########.fr       */
+/*   Updated: 2025/05/24 08:19:04 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 << "📄 " << txt << "\n" \
 << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" RESET "\n" << std::endl;
 
+/**
+ * Program entry point.
+ *
+ * Generates a random Base pointer and prints it, then dereferences the pointer
+ * and prints the resulting reference, and finally deletes the pointer.
+ */
 int main(void)
 {
 	std::cout << BGRN "\n\n📋===== IDENTIFY REAL TYPE SIMULATION =====📋\n\n" RESET;
