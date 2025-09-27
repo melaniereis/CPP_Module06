@@ -730,6 +730,6 @@ After mastering Module 06, you'll be ready to tackle:
 
 *"Type safety is not a restriction, it's a foundation for reliable software."*
 
-**Module 06 Complete** ✨ | **Previous**: [← Module 05](../CPP_Module05/README.md) | **Next**: [Module 07 →](../CPP_Module07/README.md)
+**Module 06 Complete** ✨ | **Previous**: [← Module 05](https://github.com/melaniereis/CPP_Module05/) | **Next**: [Module 07 →](https://github.com/melaniereis/CPP_Module07/)
 
 </div>
